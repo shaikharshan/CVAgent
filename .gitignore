@@ -1,0 +1,5 @@
+.env
+/dataset
+/__pycache__
+/.streamlit
+/venv
