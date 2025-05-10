@@ -19,53 +19,74 @@ UI overview:
 
 ![ba86cefd-281d-405e-af00-435370cd336e](https://github.com/user-attachments/assets/22a596b1-6110-42d5-ab06-9eee0f036987)
 
-## 🚀 How to Run This Project Locally
+🚀 How to Run This Project Locally
+Follow these steps to run the CVAgent application on your local machine. This project uses Streamlit for frontend, LangChain agents, and Ollama for local LLM inference (e.g., Mistral 7B).
 
-🚀 How to Run the Project Locally
-Follow these steps to set up and run the full CVAgent application on your local machine:
+⚠️ Make sure your system has at least 8GB RAM to support the Ollama model.
 
-1. Clone the Repository
-
-git clone https://github.com/shaikharshan/CVAgent_Accenture_Submission.git
+📦 Step 1: Clone the Repository
+```bash
+git clone https://github.com/<your-username>/CVAgent_Accenture_Submission.git
 cd CVAgent_Accenture_Submission
+```
+📌 This command copies the project to your local system and navigates into the project directory.
 
-2. Install Python Dependencies
-Ensure you have Python 3.9+ installed. Then, install the required libraries:
+🧠 Step 2: Install Python Dependencies
+Make sure you have Python 3.9+ installed. Then, install the required libraries:
+
+```bash
 
 pip install -r requirements.txt
+```
+📌 This installs all necessary Python packages like streamlit, langchain, pypdf, sqlite3, etc.
 
-3. Install and Set Up Ollama (for LLM Inference)
-If you haven’t installed Ollama yet:
+🧠 Step 3: Install and Start Ollama (for LLM Inference)
+Install Ollama (if not already installed):
 
+bash
+Copy
+Edit
 curl -fsSL https://ollama.com/install.sh | sh
-Once installed, start the Ollama service:
+Then, start the Ollama server:
 
+```bash
 
 ollama serve
-Then pull the required model (e.g., Mistral):
+```
+📌 Ollama runs the local LLM models (like Mistral 7B) used by LangChain agents.
 
+🤖 Step 4: Pull the Required LLM Model
+Pull the Mistral model locally using:
 
+```bash
 ollama pull mistral
-4. Start the Application
-In your terminal, run:
+```
+📌 This downloads the Mistral 7B model needed for job and resume analysis.
 
+🎮 Step 5: Run the Application
+Now, launch the Streamlit app:
 
+```bash
 streamlit run app.py
-This will launch the app in your browser at: http://localhost:8501
+```
+📌 This starts the frontend of the application. A browser window will open at http://localhost:8501.
 
-5. Set Up the SQLite Database (First-Time Only)
-On first launch, the app will automatically create the SQLite DB (db/CVAgentDB.db) and required tables.
+🧪 Step 6: Test the Workflow
+Signup/Login as admin to add job descriptions.
 
-To seed jobs or users manually, use the Admin panel or directly via SQLite browser.
+Login as user to view jobs and upload resume PDFs.
 
-6. Login Credentials (Sample)
-Admin email: admin@example.com
+Backend agents will analyze resumes, match to job descriptions, and generate interview emails.
 
-Admin password: admin123
+🗃️ (Optional) Reset or Inspect the Database
+The app uses SQLite located at:
 
-Or sign up via the Sign Up page
+```
+db/CVAgentDB.db
+```
+You can explore or modify it using tools like DB Browser for SQLite.
 
-🧠 Optional Notes
-Ollama models are served locally — ensure your system has at least 8GB RAM for Mistral
+🛠️ Troubleshooting
+If you face issues with ollama, ensure you're using the latest version and your system meets hardware requirements.
 
-Email functionality uses SMTP — configure credentials in email_service.py if needed
+If models fail to load, verify you ran ollama serve and pulled mistral successfully.
